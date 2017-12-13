@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!-- this file is confidential -->
+
+<rules class="couple">
+
+    <!-- rules for PHRI -->
+    <rule name="look_human_utter_begins" trigger="user_utter_start" type="motion" chance="0.50">
+        LOOK
+        <parameter name="target" target="human"/>
+        <parameter name="delay" time="0.70"/>
+        <parameter name="duration" distribution="normal" average="2.00" variance="5.00"/>
+    </rule>
+    <rule name="look_robot_utter_ends" trigger="robot_utter_end" type="motion" chance="0.90">
+        LOOK
+        <parameter name="target" target="human"/>
+        <parameter name="delay" time="0.70"/>
+        <parameter name="duration" distribution="normal" average="2.00" variance="5.00"/>
+    </rule>
+    <rule name="look_back" trigger="user_head_toward" type="motion" chance="0.90">
+        LOOK
+        <parameter name="target" target="human"/>
+        <parameter name="delay" time="0.70"/>
+        <parameter name="duration" distribution="normal" average="2.00" variance="5.00"/>
+    </rule>
+
+    <!-- rules for meta triggers -->
+    <!-- same name as meta rule, cap words for triggers, chance keep at 1.00 -->
+    <rule name="turn_instead_look" trigger="TURN_INSTEAD_LOOK" type="motion" chance="1.00">
+        TURN
+        <parameter name="target" target="human" />
+        <parameter name="delay" time="0.70" />
+        <parameter name="duration" distribution="normal" average="2.00" variance="5.00" />
+    </rule>
+
+    <!-- TODO basic unconscious reactions -->
+
+</rules>

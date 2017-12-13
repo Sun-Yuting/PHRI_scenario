@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<scenario class="couple">
+    <line id="000" condition="rightNow" type="motion">
+        IDLE
+    </line>
+    <line id="001" condition="waitEvent user_head_neutral" type="motion">
+        LOOK
+        <parameter name="target" target="human" />
+        <parameter name="delay" time="0.00" />
+        <parameter name="duration" distribution="normal" average="2.00" variance="5.00" />
+    </line>
+    <!-- question 1 -->
+    <line id="002" condition="waitTime 10.00" type="motion">
+        PASS
+    </line>
+    <line id="003" condition="checkState user_silence wait" type="utter">
+        SPEAK
+        <parameter name='content' content="えっと、猫は好きですか？" />
+        <parameter name="delay" time="0.00" />
+    </line>
+    <line id="004" condition="waitEvent user_utter_end" type="utter">
+        SPEAK
+        <parameter name='content' content="そっか。なぜですか？" />
+        <parameter name="delay" time="0.50" />
+    </line>
+    <!-- question 2 -->
+    <line id="005" condition="waitTime 10.00" type="motion">
+        PASS
+    </line>
+    <line id="006" condition="checkState user_silence wait" type="utter">
+        SPEAK
+        <parameter name='content' content="ちなみに、阪大にねこ多いですよね。野良猫に餌を与えることをどう思いますか？" />
+        <parameter name="delay" time="0.00" />
+    </line>
+    <!-- question 3 -->
+    <line id="007" condition="waitTime 10.00" type="motion">
+        PASS
+    </line>
+    <line id="008" condition="checkState user_silence wait" type="utter">
+        SPEAK
+        <parameter name='content' content="そういえば、野良猫はたくさんいるのに、なぜ野良犬は少ないでしょうか？" />
+        <parameter name="delay" time="0.00" />
+    </line>
+    <!-- chatting -->
+    <line id="009" condition="waitTime 10.00" type="motion">
+        PASS
+    </line>
+    <line id="010" condition="checkState user_silence wait" type="utter">
+        SPEAK
+        <parameter name='content' content="あのね、私は猫カフェに行ってみたいが、猫アレルギーでいけないんです。" />
+        <parameter name="delay" time="0.00" />
+    </line>
+    <!-- question 4 -->
+    <line id="011" condition="waitTime 10.00" type="motion">
+        PASS
+    </line>
+    <line id="012" condition="checkState user_silence wait" type="utter">
+        SPEAK
+        <parameter name='content' content="ちなみに、飼い猫と野良猫、どっちが幸せと思いますか？" />
+        <parameter name="delay" time="0.00" />
+    </line>
+    <!-- say goodbye -->
+    <line id="013" condition="waitTime 10.00" type="motion">
+        PASS
+    </line>
+    <line id="014" condition="checkState user_silence wait" type="utter">
+        SPEAK
+        <parameter name='content' content="ちょっと眠くなった。今日はありがとうございます。" />
+        <parameter name="delay" time="0.00" />
+    </line>
+
+    <line id="015" condition="waitEvent robot_utter_end" type="motion">
+        YAWN
+        <parameter name="delay" time="0.00" />
+    </line>
+</scenario>

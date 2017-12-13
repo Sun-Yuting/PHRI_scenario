@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<meta_rules class="couple">
+
+    <!-- meta rules for PHRI -->
+    <meta_rule name="turn_instead_look" trigger="look_" type="replace" chance="0.01">
+        TURN_INSTEAD_LOOK
+    </meta_rule>
+
+    <!-- TODO basic meta rules -->
+</meta_rules>
