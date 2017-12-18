@@ -67,7 +67,11 @@ class Net():
 
     def send(self, command, target):
         if target == 'tts':
-            self.client_tts.send(command)
+            # tts format: Play voice_name content delay
+            user = 'watanabe_ver4.0_22'
+            tokens = command.split(' ')
+            tts_command = f'Play {user} {tokens[1]}'
+            self.client_tts.send(tts_command)
         elif target == 'bm':
             self.client_bm.send(command)
         else:

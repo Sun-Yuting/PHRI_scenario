@@ -28,6 +28,8 @@ class EventGenerator(threading.Thread):
         elif key == 'sensing_params' and hasattr(self, 'sensing_params') and len(self.sensing_params) >= 2:
             # [0]
             if self.sensing_params[0] != value[0]:
+                if value[0] == 'pass':
+                    value[0] = self.sensing_params[0]
                 try:
                     audio_params = value[0].split(b',')
                     if len(audio_params) >= 10:
@@ -39,7 +41,7 @@ class EventGenerator(threading.Thread):
                     print('svtools value error')
             # [9]
             if self.sensing_params[1] != value[1]:
-                self.events.add_event(f'user_head_{value[1][2:-1].lower()}')
+                self.events.add_event(f'user_head_{value}')
         # call super
         super(EventGenerator, self).__setattr__(key, value)
 
@@ -54,6 +56,7 @@ class EventGenerator(threading.Thread):
             # for details, see sensing part protocol
             parameters = self.network.recv('sensing').split(' ')
             #print(parameters)
+
             # [0]
             audio_params = parameters[0].split(',')
             if len(audio_params) >= 10:
@@ -61,9 +64,16 @@ class EventGenerator(threading.Thread):
                 if not vad == 0 and not vad == 1:
                     vad = 'pass'
                 parameters[0] = vad
+            else:
+                parameters[0] = 'pass'
+
             # [9]
             parameters[1] = parameters[1][2:-1].lower()
             print(parameters)
+
+            # set sensing_params
+            self.sensing_params = parameters
+
             #self.sensing_params = self.network.recv('sensing').split(' ')
             # (robot_utter) start: 'start', end: 'end'
             #self.tts_params = self.network.recv('tts')

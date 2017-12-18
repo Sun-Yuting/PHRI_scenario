@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../PHRI_motion/.idea/PHRI_motion.iml" filepath="$PROJECT_DIR$/../PHRI_motion/.idea/PHRI_motion.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/PHRI_scenario.iml" filepath="$PROJECT_DIR$/.idea/PHRI_scenario.iml" />
     </modules>
   </component>

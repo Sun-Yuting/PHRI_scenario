@@ -9,10 +9,11 @@ class XmlParser:
     """xml files parser"""
 
     def __init__(self, rule_file="rule.xml", scenario_file="scenario.xml", meta_file="meta_rule.xml"):
-        if not os.path.isfile(rule_file) or not os.path.isfile(scenario_file):
-            raise ValueError("no xml file!")
+        if not os.path.isfile(rule_file) or not os.path.isfile(scenario_file) or not os.path.isfile(meta_file):
+            raise ValueError("no xml files!")
         self.rule_file = rule_file
         self.scenario_file = scenario_file
+        self.meta_file = meta_file
         self.r_tree, self.r_root = self.parse(rule_file)
         self.s_tree, self.s_root = self.parse(scenario_file)
         self.m_tree, self.m_root = self.parse(meta_file)
