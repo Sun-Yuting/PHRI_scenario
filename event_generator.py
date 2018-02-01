@@ -16,9 +16,15 @@ class EventGenerator(threading.Thread):
         self.tts_params = ''  # "start" or "end"
         self.bm_params = ''  # "start" or "end"
 
-    # override set attribute operator to trigger events when attribute value changes
     def __setattr__(self, key, value):
-            # generate events
+        """
+        This method is called automatically called whenever an assign behavior is performed on a class attribute.
+
+        :param key: the name of the attribute which is called
+        :param value: the value to set in that attribute
+        :return: None
+        """
+        # generate events
         if key == 'tts_params' and hasattr(self, 'tts_params'):
             if self.tts_params != value:
                 self.events.add_event(f'robot_utter_{value}')
@@ -51,6 +57,11 @@ class EventGenerator(threading.Thread):
         self.events = events
 
     def run(self):
+        """
+        Continuously recvs parameters from sensors, and tries to assign them.
+
+        :return: None
+        """
 
         while True:
             # for details, see sensing part protocol

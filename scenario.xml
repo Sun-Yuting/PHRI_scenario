@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <scenario class="couple">
-    <line id="000" condition="rightNow" type="motion">
-        IDLE
-    </line>
     <line id="001" condition="waitEvent user_head_neutral" type="motion">
         LOOK
         <parameter name="target" target="human" />

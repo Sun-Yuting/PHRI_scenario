@@ -4,16 +4,10 @@
 """
 Proximate Human-Robot Interaction System -- Scenario Part
 
-@Last Update: 2017.12.13
+@Last Update: 2017.12.21
 
 @Author: Sun Yuting
 @Email: sunyuting798@gmail.com | sunyuting798@126.com
-
-@Dependency:
-[0] python, version 3.6 or higher
-[1] xml files: rule file, meta rule file & scenario file
-[2] PHRI sensing part
-[3] tts engine, robot motion server
 """
 
 import xml_parser
@@ -27,6 +21,12 @@ import state
 
 # TODO: xml checker
 def check_xml(root):
+    """
+    Checks the syntax of an xml file.
+
+    :param root: root of the parsed xml file
+    :return: True or False on whether check passed
+    """
     return True
 
 
@@ -46,6 +46,7 @@ def main(rule_file="rule.xml", scenario_file="scenario.xml", meta_file="meta_rul
     print('info: syntax check passed')
 
     # get ready for net, state, event queue
+    # making these singleton is better
     network = net.Net()
     stat = state.State()
     events = event_queue.EventQueue()
@@ -68,4 +69,4 @@ def main(rule_file="rule.xml", scenario_file="scenario.xml", meta_file="meta_rul
 
 
 if __name__ == '__main__':
-    main(sys.argv[1], sys.argv[2])
+    main()

@@ -2,8 +2,11 @@
   <dictionary name="erato-android">
     <words>
       <w>addr</w>
+      <w>geminoid</w>
       <w>phri</w>
       <w>recv</w>
+      <w>recving</w>
+      <w>recvs</w>
       <w>reparse</w>
       <w>svtools</w>
       <w>yuting</w>

@@ -28,12 +28,24 @@ class Executor(threading.Thread):
 
     @staticmethod
     def check_chance(chance):
+        """
+        Decides if a chance has won or not.
+
+        :param chance: a float from 0.0 to 1.0
+        :return: True for won, False for not
+        """
         if chance >= random.random():
             return True
         return False
 
     @staticmethod
     def get_time(para):
+        """
+        Generates a time in seconds given a distribution.
+
+        :param para: the para tag containing distribution parameters
+        :return: a float of time
+        """
         dist = para.get('distribution')
         if dist == 'uniform':
             minim = float(para.get('min'))
@@ -45,6 +57,12 @@ class Executor(threading.Thread):
             return random.gauss(average, standard)
 
     def apply_rules(self, event):
+        """
+        Gets all the rules triggered by a given event.
+
+        :param event: event to trigger rules
+        :return: a list of rules
+        """
         rules = []
         for rule in self.r_root:
             if rule.get('trigger') == event:
@@ -57,6 +75,12 @@ class Executor(threading.Thread):
         return rules
 
     def apply_metas(self, rules):
+        """
+        Gets meta rules triggered by a given rule.
+
+        :param rules: rules to trigger meta rules
+        :return: a list of meta rules
+        """
         if rules is None:
             return None
 
@@ -82,6 +106,12 @@ class Executor(threading.Thread):
                 return False
 
     def check_condition(self, condition):
+        """
+        Parses the condition of a rule.
+
+        :param condition: one of the following types, rightNow, waitEvent, waitTime, checkState...
+        :return: True, False, or 'skip'
+        """
         # types:
         # rightNow
         # waitEvent event_name [timeout]
@@ -114,6 +144,12 @@ class Executor(threading.Thread):
                 return 'skip'
 
     def execute(self, tag, rule_type):
+        """
+
+        :param tag:
+        :param rule_type:
+        :return:
+        """
         # command format motion: "name target delay duration"
         # command format utter: "SPEAK content delay"
 

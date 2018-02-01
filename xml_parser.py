@@ -20,15 +20,31 @@ class XmlParser:
 
     @staticmethod
     def parse(addr):
+        """
+        Parses the xml file in a given address.
+
+        :param addr: the address of an xml file
+        :return: the pointer to the tree or the root of the parsed xml file
+        """
         tree = ET.parse(addr)
         root = tree.getroot()
 
         return tree, root
 
     def get_result(self):
+        """
+        Returns the pointers of rule, scenario, meta_rule.
+
+        :return: trees and roots
+        """
         return self.r_tree, self.r_root, self.s_tree, self.s_root, self.m_tree, self.m_root
 
     def get_rule_file(self):
+        """
+        Returns the address of the rule file
+
+        :return:
+        """
         return self.rule_file
 
     def set_rule_file(self, rule_file, reparse=False):
